@@ -56,8 +56,8 @@ def main():
 
     fecha_actual = date.today()
     fecha_format = fecha_actual.strftime('%Y%m%d')
-    json_file_path = 'data/raw/Celulares_' + fecha_format + '.json'
-    excel_file_path = 'data/clean/Celulares_' + fecha_format + '.xlsx' 
+    json_file_path = 'data/raw/Celulares' + '_' + fecha_format + '.json'
+    excel_file_path = 'data/clean/Celulares' + '_' + fecha_format + '.xlsx' 
 
     df = import_data(json_file_path)
     df = transform_data(df)
