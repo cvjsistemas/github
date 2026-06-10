@@ -35,7 +35,24 @@ def transform_data(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def load_to_excel(df: pd.DataFrame, file_path: str, sheet: str):
-    df.to_excel(file_path, sheet_name=sheet, index=False)
+
+    with pd.ExcelWriter(file_path, engine="xlsxwriter") as writer:
+
+        df.to_excel(writer, sheet_name=sheet, index=False)
+
+        worksheet = writer.sheets[sheet]
+
+        for i, col in enumerate(df.columns):
+
+            ancho = min(
+                max(
+                    df[col].fillna("").astype(str).str.len().max(),
+                    len(col)
+                ) + 2,
+                75
+            )
+
+            worksheet.set_column(i, i, ancho)
 
 
 def send_email(file_path: str):
