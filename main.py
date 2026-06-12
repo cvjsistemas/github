@@ -102,7 +102,7 @@ def send_email(file_path: str):
 def main():
 
     fecha_actual = date.today()
-    fecha_format = fecha_actual.strftime('%Y%m%d')
+    fecha_format = fecha_actual.strftime('%Y%m%d%H%M%S')
     json_file_path = 'data/raw/' + 'Celulares' + '_' + fecha_format + '.json'
     excel_file_path = 'data/clean/' + 'Celulares' + '_' + fecha_format + '.xlsx'
 
